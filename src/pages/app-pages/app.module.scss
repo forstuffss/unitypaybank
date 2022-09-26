@@ -1,0 +1,7 @@
+@import "../../scss/base/variables";
+
+.balance {
+  &__pending {
+    background-color: $color-dark;
+  }
+}

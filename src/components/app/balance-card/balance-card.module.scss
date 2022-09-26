@@ -1,0 +1,42 @@
+@import "../../../scss/base/variables";
+
+.card {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 2rem;
+  background-color: transparent;
+  border-radius: 5px;
+
+  &__icon {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    padding: 1.5rem;
+    background-color: $color-primary;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    color: $color-primary;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__cash {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__money {
+    font-weight: $weight-bold;
+  }
+
+  &__currency {
+    color: $color-dark-1;
+  }
+}

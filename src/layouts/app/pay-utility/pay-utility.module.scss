@@ -1,0 +1,10 @@
+@import "../../../scss/base/variables";
+@import "../../../scss/abstract/mixins/responsive";
+
+.ctn {
+  padding: 2rem;
+  background-color: $color-dark;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

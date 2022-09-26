@@ -1,0 +1,33 @@
+@import "../../../scss/base/variables";
+
+.days {
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: 1;
+  background-color: $color-darker;
+  border-radius: 5px;
+
+  &__title,
+  &__subtitle,
+  &__info-text {
+    font-weight: $weight-bold;
+  }
+
+  &__subtitle {
+    font-size: 2rem;
+  }
+
+  &__divider {
+    width: 0.3rem;
+    height: 80%;
+    background-color: $color-dark;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

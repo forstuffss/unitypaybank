@@ -1,0 +1,70 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.bg-design {
+  transform: translate(50%, -50%);
+  height: 85rem;
+  width: 85rem;
+  background-color: $color-darker;
+  z-index: -1;
+
+  @include responsive-size(
+    $responsive-max-width,
+    $max-width: width-mobile-small
+  ) {
+    height: 65rem;
+    width: 65rem;
+  }
+
+  &,
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  &,
+  &::before {
+    top: 0;
+    right: 0;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    background-color: $color-dark;
+  }
+
+  &::before {
+    height: 70rem;
+    width: 70rem;
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-mobile-small
+    ) {
+      height: 58rem;
+      width: 58rem;
+    }
+  }
+
+  &::after {
+    content: "";
+    width: 20rem;
+    height: 20rem;
+    bottom: 0;
+    left: 0;
+    transform: translate(2.5rem, -2.5rem);
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-mobile-small
+    ) {
+      height: 10rem;
+      width: 10rem;
+      top: 50%;
+      transform: translate(6rem, 25rem);
+    }
+  }
+}

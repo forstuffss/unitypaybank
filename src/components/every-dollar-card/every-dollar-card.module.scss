@@ -1,0 +1,50 @@
+@import "../../scss/base/variables";
+
+.card {
+  position: relative;
+  background-color: $color-darkest;
+  border-radius: 5px;
+  width: 30rem;
+  height: 9rem;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1.7rem;
+
+  &--active {
+    background-color: $color-primary;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 50%;
+    width: 33rem;
+    height: 12rem;
+    transform: translate(-50%, -50%);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(1px);
+    border-radius: 5px;
+    z-index: -1;
+  }
+
+  &__detail {
+    font-weight: $weight-semi-bold;
+  }
+
+  &__amount {
+    font-weight: $weight-bold;
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+  }
+
+  &__time {
+    border: 2px solid $color-light;
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: fit-content;
+  }
+}

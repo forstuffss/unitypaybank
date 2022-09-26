@@ -1,0 +1,46 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 3rem 4rem;
+  width: 35rem;
+
+  &--active {
+    background-color: $color-darker;
+  }
+
+  @include responsive-size($responsive-max-width, $max-width: $width-desktop) {
+    width: 30rem;
+  }
+
+  @include responsive-size($responsive-max-width, $max-width: 1000px) {
+    width: 27rem;
+    padding: 3rem;
+  }
+
+  @include responsive-size(
+    $responsive-max-width,
+    $max-width: $width-tablet-potrait + 100
+  ) {
+    width: 35rem;
+    padding: 3rem 4rem;
+  }
+
+  @include responsive-size(
+    $responsive-max-width,
+    $max-width: $width-mobile-big
+  ) {
+    background-color: $color-darker;
+  }
+
+  &__icon {
+    background-color: $color-dark;
+    padding: 1rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+  }
+}

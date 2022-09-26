@@ -1,0 +1,31 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.every {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+
+  &__dollar {
+    display: flex;
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-tablet-potrait - 50
+    ) {
+      flex-direction: column;
+      gap: 5rem;
+    }
+  }
+
+  &__action {
+    align-self: flex-start;
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-tablet-potrait - 50
+    ) {
+      align-self: center;
+    }
+  }
+}

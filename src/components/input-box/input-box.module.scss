@@ -1,0 +1,27 @@
+@import "../../scss/base/variables";
+
+.box {
+  width: 30rem;
+  position: relative;
+
+  &__input {
+    width: 100%;
+    padding: 1.5rem;
+    padding-left: 5rem;
+    outline: none;
+    border: 2px solid $color-dark;
+    font-weight: $weight-semi-bold;
+
+    &:focus {
+      border-color: $color-primary;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
+    width: 2rem;
+  }
+}

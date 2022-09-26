@@ -1,0 +1,20 @@
+@import "../../../scss/base/variables";
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: $weight-semi-bold;
+  cursor: pointer;
+
+  &__multi-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__subtext {
+    color: $color-dark-1;
+  }
+}

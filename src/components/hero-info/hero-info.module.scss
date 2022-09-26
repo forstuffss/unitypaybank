@@ -1,0 +1,35 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.hero {
+  display: flex;
+  flex: 50%;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__action {
+    width: max-content;
+  }
+}
+
+.stat {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    & > :first-child {
+      font-weight: $weight-semi-bold;
+      font-size: 2rem;
+    }
+
+    & > :last-child {
+      color: $color-primary;
+      font-weight: $weight-semi-bold;
+    }
+  }
+}

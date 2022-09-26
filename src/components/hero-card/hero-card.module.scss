@@ -1,0 +1,25 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.hero-card {
+  flex: 50%;
+  display: flex;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.bg-circle {
+  border-radius: 50%;
+  border: 2px solid $color-light;
+  width: 50rem;
+  height: 50rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include responsive-size($responsive-max-width, $max-width: 860px) {
+    width: 40rem;
+    height: 40rem;
+  }
+}

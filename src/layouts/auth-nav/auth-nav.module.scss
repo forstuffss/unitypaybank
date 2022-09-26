@@ -1,0 +1,17 @@
+@import "../../scss/base/variables";
+
+.auth {
+  &__navi {
+    display: flex;
+    font-size: 2rem;
+    gap: 5rem;
+    align-items: center;
+    font-weight: $weight-bold;
+  }
+
+  &__delimeter {
+    width: 2px;
+    height: 10px;
+    background-color: $color-dark;
+  }
+}

@@ -1,0 +1,33 @@
+@keyframes rotate-clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// For drop down profile in /app
+@keyframes moveDDItemsOut {
+  from {
+    top: 5rem;
+    opacity: 1;
+  }
+
+  to {
+    top: -10rem;
+    opacity: 0;
+  }
+}
+
+@keyframes moveDDItemsIn {
+  from {
+    top: -10rem;
+    opacity: 0;
+  }
+
+  to {
+    top: 5rem;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,81 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.card {
+  position: relative;
+  padding: 1.5rem 3rem;
+  padding-bottom: 0;
+  border-radius: 5px;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+
+  &--open {
+    background-color: $color-darker;
+    transition: background-color 0.2s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -10%;
+      width: 0.5rem;
+      height: 100%;
+      background-color: $color-light;
+      z-index: 11;
+    }
+  }
+
+  &--close {
+    background-color: transparent;
+  }
+
+  &__support {
+    overflow-y: hidden;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  &__question {
+    text-align: start;
+    margin-bottom: 1.5rem;
+  }
+
+  &__icon {
+    font-weight: $weight-bold;
+    font-size: 1.3rem;
+  }
+
+  &__answer {
+    color: $color-dark-1;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    transition: height 0.2s;
+
+    &--open {
+      height: 10rem;
+
+      @include responsive-size(
+        $responsive-max-width,
+        $max-width: $width-desktop
+      ) {
+        height: 14rem;
+      }
+
+      @include responsive-size(
+        $responsive-max-width,
+        $max-width: $width-mobile-big
+      ) {
+        height: 18rem;
+      }
+    }
+
+    &--close {
+      height: 0px;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  h2 {
+    width: 70%;
+  }
+
+  &__cards {
+    position: relative;
+    width: 50%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-tablet-potrait
+    ) {
+      align-self: flex-start;
+      width: 70%;
+      margin-left: 5rem;
+    }
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-mobile-big
+    ) {
+      width: 80%;
+    }
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-mobile-small
+    ) {
+      width: 90%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      background-color: $color-darker;
+      top: 0;
+      left: -10%;
+      width: 0.5rem;
+      height: 100%;
+    }
+  }
+}

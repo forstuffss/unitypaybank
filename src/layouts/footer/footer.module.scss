@@ -1,0 +1,62 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.footer {
+  background-color: $color-darker;
+  font-size: 1.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding-right: 20rem;
+  padding-left: 20rem;
+
+  @include responsive-size($responsive-max-width, $max-width: $width-desktop) {
+    padding-right: 15rem;
+    padding-left: 15rem;
+  }
+
+  @include responsive-size($responsive-max-width, $max-width: 1000px) {
+    padding-right: 4rem;
+    padding-left: 4rem;
+  }
+
+  @include responsive-size($responsive-max-width, $max-width: 870px) {
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-mobile-big
+    ) {
+      flex-direction: column;
+      gap: 3rem;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  &__icon {
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-tablet-potrait
+    ) {
+      display: none;
+    }
+  }
+
+  &__copy {
+    font-weight: $weight-bold;
+    font-size: 1.3rem;
+    text-align: center;
+    color: $color-dark;
+  }
+}

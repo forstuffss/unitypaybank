@@ -1,0 +1,39 @@
+@import "../../../scss/base/variables";
+@import "../../../scss/base/animation";
+@import "../../../scss/abstract/mixins/responsive";
+
+.profile {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @include responsive-size($responsive-max-width, $max-width: 725px) {
+    margin-left: -10rem;
+  }
+
+  &__img {
+    position: relative;
+    left: -1rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  &__dd {
+    position: absolute;
+    right: 0;
+    background-color: $color-darker;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+
+    &--active {
+      animation: moveDDItemsIn 0.2s linear forwards;
+    }
+
+    &--not-active {
+      animation: moveDDItemsOut 0.2s linear forwards;
+    }
+  }
+}

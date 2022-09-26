@@ -1,0 +1,11 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.header {
+  display: flex;
+  align-items: center;
+
+  @include responsive-size($responsive-max-width, $max-width: 750px) {
+    display: block;
+  }
+}

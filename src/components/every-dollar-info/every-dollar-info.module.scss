@@ -1,0 +1,20 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.dollar-info {
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  & > P:last-child {
+    width: 70%;
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-tablet-potrait
+    ) {
+      width: 100%;
+    }
+  }
+}

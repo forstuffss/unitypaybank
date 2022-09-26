@@ -1,0 +1,35 @@
+$weight-regular: 400;
+$weight-semi-bold: 600;
+$weight-bold: 700;
+
+$color-primary: green;
+$color-darkest: rgb(20, 20, 20);
+$color-darker: rgb(30, 30, 30);
+$color-dark: rgb(50, 50, 50);
+$color-dark-1: rgb(70, 70, 70);
+$color-light: rgb(215, 215, 215);
+$color-lighter: rgb(240, 240, 240);
+
+$width-desktop-max: 1512px;
+$width-desktop-xlarge: 1440px;
+$width-desktop-large: 1280px;
+$width-desktop: 1200px;
+$width-tablet-landscape: 1152px;
+$width-tablet-potrait: 800px;
+$width-mobile-big: 600px;
+$width-mobile-small: 450px;
+
+$responsive-min-width: "MINIMUM WIDTH";
+$responsive-max-width: "MAXIMUM WIDTH";
+
+$responsive-min-height: "MINIMUM HEIGHT";
+$responsive-max-height: "MAXIMUM HEIGHT";
+
+$responsive-min-width-max-width: "MIN WIDTH MAX WIDTH";
+$responsive-min-width-min-height: "MIN WIDTH MIN HEIGHT";
+$responsive-min-width-max-height: "MIN WIDTH MAX HEIGHT";
+
+$responsive-max-width-min-height: "MAX WIDTH MIN HEIGHT";
+$responsive-max-width-max-height: "MAX WIDTH MAX HEIGHT";
+
+$responsive-min-height-max-height: "MIN HEIGHT MAX HEIGHT";

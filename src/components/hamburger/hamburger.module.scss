@@ -1,0 +1,68 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.hamburger {
+  top: 50%;
+  left: 0;
+  width: 20px;
+  transform: translateY(-50%);
+
+  &__parent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 30px;
+    width: 30px;
+    overflow: hidden;
+    display: none;
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-tablet-potrait - 75
+    ) {
+      display: block;
+    }
+  }
+
+  &,
+  &::before,
+  &::after {
+    position: absolute;
+    width: 100%;
+    height: 0.3rem;
+    display: inline-block;
+    background-color: $color-light;
+    transition: all 0.2s;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+  }
+
+  &-close {
+    &::before {
+      top: -1.2rem;
+      left: 0;
+    }
+
+    &::after {
+      bottom: -1.2rem;
+      left: 0;
+    }
+  }
+
+  &-open {
+    & {
+      background-color: transparent;
+    }
+
+    &::before {
+      transform: rotate(360deg-45deg);
+    }
+
+    &::after {
+      transform: rotate(-(360deg-45deg));
+    }
+  }
+}

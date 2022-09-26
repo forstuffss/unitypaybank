@@ -1,0 +1,40 @@
+@import "../../../scss/base/variables";
+
+.section {
+  padding-top: 0;
+  overflow-x: scroll;
+}
+
+.transactions {
+  background-color: $color-darker;
+  padding: 3rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: max-content;
+
+  &__divider {
+    height: 0.2rem;
+    width: 100%;
+    background-color: $color-dark;
+    margin-top: 2rem;
+  }
+
+  &__title {
+    font-weight: $weight-bold;
+  }
+
+  &__sub {
+    display: flex;
+    justify-content: space-between;
+    color: $color-dark-1;
+    font-weight: $weight-bold;
+    font-size: 1.2rem;
+    color: $color-primary;
+  }
+
+  &__item {
+    width: 20rem;
+  }
+}

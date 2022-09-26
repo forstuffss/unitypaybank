@@ -1,0 +1,123 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.navi {
+  position: relative;
+  justify-content: space-between;
+  margin: 2rem 5rem;
+  font-size: 1.6rem;
+  z-index: 5;
+
+  &__bg-mobile {
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    height: 100vh;
+    width: 30rem;
+    background-color: $color-dark;
+    transition: right 0.2s;
+
+    &--active {
+      right: -10%;
+    }
+  }
+
+  @include responsive-size(
+    $responsive-max-width,
+    $max-width: $width-tablet-landscape
+  ) {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+
+  &,
+  & > div:not(:last-child, :first-child) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  & div {
+    gap: 3rem;
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-tablet-landscape
+    ) {
+      gap: 1rem;
+    }
+  }
+
+  & div ul {
+    display: flex;
+    gap: 3rem;
+
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-tablet-landscape
+    ) {
+      gap: 1.5rem;
+
+      @include responsive-size(
+        $responsive-max-width,
+        $max-width: $width-tablet-potrait - 75
+      ) {
+        gap: 5rem;
+      }
+    }
+  }
+
+  &__items {
+    @include responsive-size(
+      $responsive-max-width,
+      $max-width: $width-tablet-potrait - 75
+    ) {
+      position: absolute;
+      flex-direction: column;
+      right: -50%;
+      top: 15rem;
+      z-index: 1;
+      transition: right 0.2s;
+    }
+
+    &--active {
+      @include responsive-size(
+        $responsive-max-width,
+        $max-width: $width-tablet-potrait - 75
+      ) {
+        right: 0;
+      }
+    }
+  }
+
+  &-action {
+    cursor: pointer;
+
+    &--signup {
+      @include responsive-size(
+        $responsive-max-width,
+        $max-width: $width-tablet-potrait - 75
+      ) {
+        position: absolute;
+        display: block;
+        top: 5rem;
+        right: -50%;
+        z-index: 2;
+        transition: right 0.2s;
+      }
+
+      &--active {
+        right: 0;
+      }
+    }
+
+    &--login {
+      @include responsive-size(
+        $responsive-max-width,
+        $max-width: $width-tablet-potrait + 50
+      ) {
+        display: none;
+      }
+    }
+  }
+}

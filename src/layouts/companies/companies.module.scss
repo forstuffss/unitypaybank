@@ -1,0 +1,27 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.partners {
+  display: flex;
+  justify-content: space-between;
+  font-size: 4rem;
+  color: $color-dark-1;
+
+  @include responsive-size($responsive-max-width, $max-width: 700px) {
+    font-size: 3.5rem;
+  }
+
+  @include responsive-size(
+    $responsive-max-width,
+    $max-width: $width-mobile-big
+  ) {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+
+.partner {
+  width: 12rem;
+  // height: 12rem;
+}

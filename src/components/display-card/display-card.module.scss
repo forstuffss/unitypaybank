@@ -1,0 +1,90 @@
+@import "../../scss/base/variables";
+@import "../../scss/abstract/mixins/responsive";
+
+.card {
+  width: 35rem;
+  height: 45rem;
+  background-color: $color-lighter;
+  z-index: 4;
+  border-radius: 1rem;
+  color: $color-darkest;
+  display: flex;
+  flex-direction: column;
+  font-weight: $weight-semi-bold;
+  font-size: 2.5rem;
+  padding: 1rem;
+
+  @include responsive-size($responsive-max-width, $max-width: 860px) {
+    width: 30rem;
+    height: 40rem;
+  }
+
+  &__title {
+    margin-top: 3rem;
+    margin-left: 2rem;
+    font-weight: $weight-bold;
+  }
+
+  &__payment {
+    background-color: $color-light;
+    border-radius: 1rem;
+    font-size: 1.7rem;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    & figure {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      gap: 3rem;
+
+      & img {
+        width: rem;
+        height: 3rem;
+        padding: 1rem;
+        background-color: $color-lighter;
+        border-radius: 50%;
+      }
+
+      & figcaption {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  &__info {
+    font-weight: $weight-bold;
+  }
+
+  &__fig {
+    background-color: $color-darkest;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    color: $color-light;
+    padding: 1.5rem 1.5rem;
+    margin-top: 2rem;
+
+    & figure {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      font-size: 2rem;
+
+      @include responsive-size($responsive-max-width, $max-width: 860px) {
+        font-size: 1.8rem;
+        justify-content: space-between;
+      }
+
+      & p {
+        color: $color-lighter;
+      }
+
+      & img {
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+      }
+    }
+  }
+}
