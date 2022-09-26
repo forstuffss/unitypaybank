@@ -1,6 +1,6 @@
 // export const BASE_URL = "http://localhost:33000";
 export const BASE_URL =
-  process.env.BASE_URL || "https://shielded-fjord-93131.herokuapp.com/";
+  process.env.BASE_URL || "https://shielded-fjord-93131.herokuapp.com";
 export const APP_NAME = "ORBITPAY";
 export const APP_EMAIL_ADDR = "info@orbitpay.com";
 export const APP_PHONE_NUM = "+91 2308 455 789";

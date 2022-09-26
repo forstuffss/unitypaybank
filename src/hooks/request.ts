@@ -59,7 +59,6 @@ function useRequest() {
   }
 
   async function request(url: string, options: Option) {
-    console.log(url);
     dispatch({ type: "Loading" });
 
     try {
