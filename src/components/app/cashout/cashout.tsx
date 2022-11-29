@@ -3,12 +3,19 @@ import styles from "./cashout.module.scss";
 import copyIcon from "../../../assets/copy.svg";
 import bitcoinIcon from "../../../assets/bitcoin.svg";
 
-function copyIconClickHandler() {
-  // TODO:
-  navigator.clipboard.writeText("dddd");
-}
+import { useRef } from "react";
 
 function Cashout() {
+  const btcDepositAddrBoxRef = useRef<HTMLInputElement>(null);
+
+  function copyIconClickHandler() {
+    const btcDepositAddress = btcDepositAddrBoxRef.current?.value;
+
+    if (!btcDepositAddress) return;
+
+    navigator.clipboard.writeText(btcDepositAddress);
+  }
+
   return (
     <div className={styles["cashout"]}>
       <div className={styles["cashout__deposit"]}>
@@ -27,6 +34,7 @@ function Cashout() {
             type="text"
             id="btc_addr"
             onClickIcon={copyIconClickHandler}
+            ref={btcDepositAddrBoxRef}
           />
         </form>
       </div>
@@ -58,8 +66,9 @@ function Cashout() {
         </form>
 
         <p>
-          You'll get more withdrawal method after a minimum balance of $1k.
-          Paypal, Direct Bank Transfer ... Crypto wallet.
+          You'll get more withdrawal method after a minimum balance of $1k and
+          your account has been verified by our system. Paypal, Direct Bank
+          Transfer ... Crypto wallet.
         </p>
       </div>
     </div>

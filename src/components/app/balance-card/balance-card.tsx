@@ -8,6 +8,8 @@ type IProps = {
 };
 
 function BalanceCard({ icon, balance, title, extraClases }: IProps) {
+  balance = `$${(+balance.slice(1)).toFixed(2)}`;
+
   return (
     <div className={`${styles["card"]} ${extraClases ? extraClases : ""}`}>
       <img alt={title} src={icon} className={styles["card__icon"]} />

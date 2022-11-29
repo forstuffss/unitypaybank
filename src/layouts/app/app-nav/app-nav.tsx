@@ -2,8 +2,8 @@ import { useState } from "react";
 import ProfileDropDown from "../../../components/app/profile-drop-down/profile-drop-down";
 import ReusableNav from "../../../components/reusable-nav/reusable-nav";
 import { APP_NAV, DDItems } from "../../../util/config";
-//TODO: this image should be from the server
-import dp from "../../../assets/card_dp.jpg";
+// import dp from "../../../assets/card_dp.jpg";
+import dp from "../../../assets/bank.svg";
 
 function AppNav() {
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);

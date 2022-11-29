@@ -22,10 +22,12 @@ function TransactionCard({ itemStyle, dividerClass, transactions }: IProps) {
     transferDate,
     transferTime,
     transactionID,
-    amount,
     status,
     deliveredOn,
   } = transactions!;
+  let { amount } = transactions!;
+
+  amount = `$${(+amount).toFixed(2)}`;
 
   return (
     <>

@@ -6,12 +6,14 @@ export type Last30DaysType = {
 };
 
 function Last30Days({ transactions, earnings }: Last30DaysType) {
+  earnings = `$${(+earnings).toFixed(2)}`;
+
   return (
     <div className={styles["days"]}>
       <p className={`title--1 ${styles["days__title"]}`}>
-        Last
+        All
         <br />
-        30 Days
+        Transactions
       </p>
 
       <div className={styles["days__divider"]}></div>

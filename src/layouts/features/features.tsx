@@ -15,7 +15,7 @@ const features = [
     icon: bonus,
     title: "Bonus like never before",
     detail:
-      "You get 15% on first deposit. 5% on recurring deposit. 5% cashback on every first payment of the month. 2% weekly bonus for acccount with balance of $1k+.",
+      "For verified/regular users, you get 15% on first deposit. 5% on recurring deposit. 5% cashback on every first payment of the month. 2% weekly bonus for acccount with balance of $10k+.\nFor new users, you get +5% on every deposit and +5% bonus on every utility paid.",
   },
   {
     icon: global,

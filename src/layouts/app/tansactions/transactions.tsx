@@ -29,7 +29,8 @@ export type TransactionsType = {
 
 function Transactions({ transactions }: TransactionsType) {
   return (
-    <section className={styles["section"]}>
+    // The id is used to scroll this layout into view when user clicks on "Earnings" in navi
+    <section id="transaction-list-sect" className={styles["section"]}>
       <div className={styles["transactions"]}>
         <p className={`title--1 ${styles["transactions__title"]}`}>
           Cash Out Transactions

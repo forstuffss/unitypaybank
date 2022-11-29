@@ -67,26 +67,41 @@ function AppDashboard() {
   const [request, _, isLoading, isError, errorMsg, result] = useRequest();
 
   useEffect(() => {
+    const acctBalance = +balanceInfo.balanceCard[0].balance.slice(1);
+
     if (param.path === "logout") {
       signoutUser();
       return;
     }
 
     if (param.path === "withdraw") {
+      if (acctBalance < 10) {
+        setDialogToRender(
+          <AlertDialog
+            title="Not Enough Balance"
+            message="You have to deposit in your account to get more withdrawal options."
+            buttonPri="Ok"
+            onButtonPriClick={removeDialogAndBg}
+            onBGBlurClick={removeDialogAndBg}
+          />
+        );
+        return;
+      }
+
       setDialogToRender(
         <AlertDialog
-          title="Not Enough Balance"
-          message="You have to deposit in your account to get more withdrawal option."
+          message="The only widrawal option currently available for you is BTC. Please use the withdrawal section on your dashboard to withdraw."
           buttonPri="Ok"
           onButtonPriClick={removeDialogAndBg}
           onBGBlurClick={removeDialogAndBg}
         />
       );
+
       return;
     }
 
     if (param.path === "settings") {
-      setDialogToRender(<Setting />);
+      setDialogToRender(<Setting removeDiag={removeDialogAndBg} />);
       return;
     }
 
@@ -103,6 +118,18 @@ function AppDashboard() {
     }
 
     if (param.path === "earnings") {
+      // if balance is 1k or greater, scroll transaction page to screen
+
+      if (acctBalance >= 1000) {
+        navigate("/app/");
+
+        const scrollTo = document.getElementById("transaction-list-sect");
+
+        if (!scrollTo) return;
+        scrollTo.scrollIntoView();
+        return;
+      }
+
       setDialogToRender(
         <AlertDialog
           title="Not Enough Balance"
