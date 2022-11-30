@@ -66,12 +66,6 @@ function AppDashboard() {
   const navigate = useNavigate();
   const [request, _, isLoading, isError, errorMsg, result] = useRequest();
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("emailAddress") === OWNER_EMAIL) {
-  //     navigate("/owner");
-  //   }
-  // }, []);
-
   useEffect(function () {
     request(`${BASE_URL}/user/userinfo`, {
       headers: {
@@ -165,27 +159,16 @@ function AppDashboard() {
     navigate("/app/");
   }, [param.path]);
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     setSessionId(token);
-  //     return;
-  //   }
-  //   navigate("/auth/login");
-  // }, [navigate]);
-
-  // useEffect(() => {
-  //   if (!sessionId) return;
-
-  //   request(`${BASE_URL}/user/userinfo`, {
-  //     headers: {
-  //       Authorization: `Bearer ${sessionId}`,
-  //     },
-  //   });
-  // }, [sessionId]);
-
   useEffect(() => {
     if (isLoading) return;
+
+    // Another device has signed in and overriden the token this device have
+    if (
+      (result.message &&
+        (result.message as string).indexOf("Invalid token provided") > -1) ||
+      (errorMsg && (errorMsg as string).indexOf("Invalid token provided") > -1)
+    )
+      return signoutUser();
 
     if (isError || errorMsg) {
       setDialogToRender(
@@ -279,23 +262,6 @@ function AppDashboard() {
       return { transactions: newTransactions };
     });
   }
-
-  // return isLoading || !(result.owner as unknown as any)?.fullname ? (
-  //   <div className="loading"></div>
-  // ) : (
-  //   <>
-  //     {dialogToRender && <BgBlur onBGBlurClick={removeDialogAndBg} />}
-  //     <Modal>{dialogToRender}</Modal>
-  //     <AppNav />
-  //     <BalanceAndBankInfo
-  //       name={balanceInfo.name}
-  //       balanceCard={balanceInfo.balanceCard}
-  //       transactions={balanceInfo.transactions}
-  //       earnings={balanceInfo.earnings}
-  //     />
-  //     <Transactions transactions={transactions.transactions} />
-  //   </>
-  // );
 
   return (
     <>
