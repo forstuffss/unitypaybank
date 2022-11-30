@@ -62,14 +62,22 @@ function AppDashboard() {
     transactions: [],
   });
 
-  const [sessionId, setSessionId] = useState<null | string>();
+  // const [sessionId, setSessionId] = useState<null | string>();
   const navigate = useNavigate();
   const [request, _, isLoading, isError, errorMsg, result] = useRequest();
 
-  useEffect(() => {
-    if (localStorage.getItem("emailAddress") === OWNER_EMAIL) {
-      navigate("/owner");
-    }
+  // useEffect(() => {
+  //   if (localStorage.getItem("emailAddress") === OWNER_EMAIL) {
+  //     navigate("/owner");
+  //   }
+  // }, []);
+
+  useEffect(function () {
+    request(`${BASE_URL}/user/userinfo`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
   }, []);
 
   useEffect(() => {
@@ -114,7 +122,8 @@ function AppDashboard() {
     if (param.path === "pay") {
       setDialogToRender(
         <PayUtility
-          token={sessionId}
+          // token={sessionId}
+          token={localStorage.getItem("token")}
           clickHandler={removeDialogAndBg}
           onPaymentSuccess={paymentSuccessfullHandler}
           renderDialog={renderDialog}
@@ -156,24 +165,24 @@ function AppDashboard() {
     navigate("/app/");
   }, [param.path]);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setSessionId(token);
-      return;
-    }
-    navigate("/auth/login");
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     setSessionId(token);
+  //     return;
+  //   }
+  //   navigate("/auth/login");
+  // }, [navigate]);
 
-  useEffect(() => {
-    if (!sessionId) return;
+  // useEffect(() => {
+  //   if (!sessionId) return;
 
-    request(`${BASE_URL}/user/userinfo`, {
-      headers: {
-        Authorization: `Bearer ${sessionId}`,
-      },
-    });
-  }, [sessionId]);
+  //   request(`${BASE_URL}/user/userinfo`, {
+  //     headers: {
+  //       Authorization: `Bearer ${sessionId}`,
+  //     },
+  //   });
+  // }, [sessionId]);
 
   useEffect(() => {
     if (isLoading) return;
@@ -271,20 +280,41 @@ function AppDashboard() {
     });
   }
 
-  return isLoading || !(result.owner as unknown as any)?.fullname ? (
-    <div className="loading"></div>
-  ) : (
+  // return isLoading || !(result.owner as unknown as any)?.fullname ? (
+  //   <div className="loading"></div>
+  // ) : (
+  //   <>
+  //     {dialogToRender && <BgBlur onBGBlurClick={removeDialogAndBg} />}
+  //     <Modal>{dialogToRender}</Modal>
+  //     <AppNav />
+  //     <BalanceAndBankInfo
+  //       name={balanceInfo.name}
+  //       balanceCard={balanceInfo.balanceCard}
+  //       transactions={balanceInfo.transactions}
+  //       earnings={balanceInfo.earnings}
+  //     />
+  //     <Transactions transactions={transactions.transactions} />
+  //   </>
+  // );
+
+  return (
     <>
+      {isLoading && <div className="loading"></div>}
       {dialogToRender && <BgBlur onBGBlurClick={removeDialogAndBg} />}
       <Modal>{dialogToRender}</Modal>
-      <AppNav />
-      <BalanceAndBankInfo
-        name={balanceInfo.name}
-        balanceCard={balanceInfo.balanceCard}
-        transactions={balanceInfo.transactions}
-        earnings={balanceInfo.earnings}
-      />
-      <Transactions transactions={transactions.transactions} />
+
+      {balanceInfo.name && (
+        <>
+          <AppNav />
+          <BalanceAndBankInfo
+            name={balanceInfo.name}
+            balanceCard={balanceInfo.balanceCard}
+            transactions={balanceInfo.transactions}
+            earnings={balanceInfo.earnings}
+          />
+          <Transactions transactions={transactions.transactions} />
+        </>
+      )}
     </>
   );
 }
