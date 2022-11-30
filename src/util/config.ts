@@ -1,9 +1,10 @@
-// export const BASE_URL = "http://localhost:33000";
+export const BASE_URL = "http://localhost:33000";
 // export const BASE_URL =
 //   process.env.BASE_URL || "https://shielded-fjord-93131.herokuapp.com";
-export const BASE_URL = process.env.BASE_URL || "https://orbitpau.onrender.com";
+// export const BASE_URL = process.env.BASE_URL || "https://orbitpau.onrender.com";
 export const APP_NAME = "ORBITPAY";
 export const APP_EMAIL_ADDR = "info@orbitpay.com";
+export const OWNER_EMAIL = "owner@app.com";
 export const APP_PHONE_NUM = "+91 2308 455 789";
 export const APP_ADDR = "Area 3, Fasasi Lane, Lagos Isolo Bus stop.";
 export const NAV = [

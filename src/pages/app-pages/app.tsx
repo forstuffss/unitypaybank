@@ -12,7 +12,7 @@ import { Last30DaysType } from "../../components/app/last-30-days/last-30-days";
 import { ReactNode, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useRequest from "../../hooks/request";
-import { BASE_URL } from "../../util/config";
+import { BASE_URL, OWNER_EMAIL } from "../../util/config";
 import PayUtility from "../../layouts/app/pay-utility/pay-utility";
 import BgBlur from "../../layouts/bg-blur/bg-blur";
 import Modal from "../../layouts/modal/modal";
@@ -65,6 +65,12 @@ function AppDashboard() {
   const [sessionId, setSessionId] = useState<null | string>();
   const navigate = useNavigate();
   const [request, _, isLoading, isError, errorMsg, result] = useRequest();
+
+  useEffect(() => {
+    if (localStorage.getItem("emailAddress") === OWNER_EMAIL) {
+      navigate("/owner");
+    }
+  }, []);
 
   useEffect(() => {
     const acctBalance = +balanceInfo.balanceCard[0].balance.slice(1);
@@ -142,6 +148,11 @@ function AppDashboard() {
       return;
     }
 
+    if (localStorage.getItem("emailAddress") === OWNER_EMAIL) {
+      navigate("/owner");
+      return;
+    }
+
     navigate("/app/");
   }, [param.path]);
 
@@ -167,29 +178,33 @@ function AppDashboard() {
   useEffect(() => {
     if (isLoading) return;
 
-    if (isError || errorMsg)
+    if (isError || errorMsg) {
       setDialogToRender(
         <AlertDialog
           title="Error occurred"
-          message={
+          message={`${
             errorMsg ||
             "Error occurred while fetching data, please make sure you have internet then reload page."
-          }
+          } Navigate to /app/logout to sign out.`}
           buttonPri="Ok"
           onButtonPriClick={() => removeDialogAndBg(false)}
           onBGBlurClick={() => removeDialogAndBg(false)}
         />
       );
+    }
 
-    if (result.message)
+    if (result.message) {
       setDialogToRender(
         <AlertDialog
-          message={result.message}
+          message={`${result.message} Navigate to /app/logout to sign out.`}
           buttonPri="Ok"
           onButtonPriClick={() => removeDialogAndBg(false)}
           onBGBlurClick={() => removeDialogAndBg(false)}
         />
       );
+    }
+
+    // if (Object.keys(result).length && !(result.owner as unknown as any)?.fullname) signoutUser();
   }, [isLoading, isError, errorMsg, result.message]);
 
   useEffect(() => {
@@ -228,6 +243,7 @@ function AppDashboard() {
 
   function signoutUser() {
     localStorage.removeItem("token");
+    localStorage.removeItem("emailAddress");
     navigate("/auth/login");
   }
 

@@ -14,6 +14,7 @@ import ForgetPassword from "./pages/landing-pages/auth-pages/forget-password/for
 import AppDashboard from "./pages/app-pages/app";
 import "./scss/base/_utility.scss";
 import "./scss/base/_base.scss";
+import Owner from "./pages/owner/owner";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -52,12 +53,8 @@ root.render(
         {/* <Route path="/app" element={<Navigate to="/app/" />} /> */}
         <Route path="/app/" element={<AppDashboard />}>
           <Route path="/app/:path" element={null} />
-          {/* <Route path="/app/pay" element={null} />
-          <Route path="/app/utilities" element={null} />
-          <Route path="/app/settings" element={null} />
-          <Route path="/app/withdraw" element={null} />
-          <Route path="/app/logout" element={null} /> */}
         </Route>
+        <Route path="/owner" element={<Owner />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

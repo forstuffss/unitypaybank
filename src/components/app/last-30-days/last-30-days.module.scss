@@ -1,4 +1,5 @@
 @import "../../../scss/base/variables";
+@import "../../../scss/abstract/mixins/responsive";
 
 .days {
   padding: 3rem;
@@ -8,6 +9,15 @@
   grid-column: 1;
   background-color: $color-darker;
   border-radius: 5px;
+
+  @include responsive-size(
+    $responsive-max-width,
+    $max-width: $width-tablet-potrait
+  ) {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+  }
 
   &__title,
   &__subtitle,

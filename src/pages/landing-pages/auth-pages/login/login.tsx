@@ -26,6 +26,7 @@ function Login() {
 
     if (result.token) {
       localStorage.setItem("token", result.token);
+      localStorage.setItem("emailAddress", result.emailAddress!);
       navigate("/app");
       return;
     }
