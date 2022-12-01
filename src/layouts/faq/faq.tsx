@@ -4,12 +4,12 @@ import styles from "./faq.module.scss";
 
 const faqs = [
   {
-    question: "What is ORBITPAY?",
+    question: "What is UNITYPAY?",
     answer:
-      "Managing utility payments can be overwhelming. ORBITPAY is here to help you manage and orginize your utility payment all in one App.",
+      "Managing utility payments can be overwhelming. UNITYPAY is here to help you manage and orginize your utility payment all in one App.",
   },
   {
-    question: "How does ORBITPAY bonus program works?",
+    question: "How does UNITYPAY bonus program works?",
     answer:
       "For verified/regular users, you get 15% on first deposit. 5% on recurring deposit. 5% cashback on every first payment of the month. 2% weekly bonus for acccount with balance of $1k+.\nFor new users, you get +5% on every deposit and +5% bonus on every utility paid.",
   },

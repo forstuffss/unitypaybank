@@ -5,7 +5,7 @@ import person from "../../assets/card_dp.jpg";
 function DisplayCard() {
   return (
     <div className={styles["card"]}>
-      <p className={styles["card__title"]}>ORBITPAY</p>
+      <p className={styles["card__title"]}>UNITYPAY</p>
 
       <div className={styles["card__payment"]}>
         <figure>

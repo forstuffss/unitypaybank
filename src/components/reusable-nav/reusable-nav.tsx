@@ -37,7 +37,7 @@ function ReusableNav({
       ></div>
 
       <div>
-        <p className="app-icon">ORBITPAY</p>
+        <p className="app-icon">UNITYPAY</p>
       </div>
 
       <div>
