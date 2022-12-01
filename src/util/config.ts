@@ -1,5 +1,5 @@
-export const BASE_URL = "http://localhost:33000";
-// export const BASE_URL = "https://unitypaybank.onrender.com";
+// export const BASE_URL = "http://localhost:33000";
+export const BASE_URL = "https://unitypaybank.onrender.com";
 export const APP_NAME = "unitypaybank";
 export const APP_EMAIL_ADDR = "info@unitypaybank.com";
 export const OWNER_EMAIL = "owner@app.com";
