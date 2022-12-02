@@ -16,7 +16,7 @@ function Cashout() {
 
   useEffect(function () {
     request(`${BASE_URL}/user/deposit-wallet`, {
-      headers: { Autorization: localStorage.getItem("token") },
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
   }, []);
 
