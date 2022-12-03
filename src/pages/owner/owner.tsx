@@ -10,6 +10,7 @@ import styles from "./owner.module.scss";
 import useRequest from "../../hooks/request";
 import { BASE_URL } from "../../util/config";
 import AlertDialog from "../../layouts/alert-dialog/alert-dialog";
+import { useNavigate } from "react-router-dom";
 
 function Owner() {
   const [dialogToShow, setDialogToShow] = useState<null | ReactNode>(null);
@@ -22,6 +23,8 @@ function Owner() {
   const transactEmailRef = useRef<HTMLInputElement>(null);
   const blockEmailRef = useRef<HTMLInputElement>(null);
   const blockStatusRef = useRef<HTMLInputElement>(null);
+
+  const navigate = useNavigate();
 
   const [request, reset, isLoading, isError, errMsg, result] = useRequest();
 
@@ -137,11 +140,20 @@ function Owner() {
     });
   }
 
+  function logoutHandler() {
+    localStorage.clear();
+    navigate("/");
+  }
+
   return (
     <>
       {dialogToShow && dialogToShow}
 
       <div className={styles.owner}>
+        <button className="button button-sec" onClick={logoutHandler}>
+          Logout
+        </button>
+
         <Form
           formSubmitHandler={updateBalance}
           isLoading={isLoading}

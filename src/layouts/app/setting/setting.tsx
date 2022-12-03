@@ -3,6 +3,7 @@ import InputBox from "../../../components/input-box/input-box";
 import styles from "./setting.module.scss";
 import iconPass from "../../../assets/password.svg";
 import iconEmail from "../../../assets/email.svg";
+import iconUser from "../../../assets/profile.svg";
 import Form from "../../form/form";
 import useRequest from "../../../hooks/request";
 import { BASE_URL } from "../../../util/config";
@@ -13,9 +14,11 @@ type IProps = { removeDiag: () => void };
 function Setting({ removeDiag }: IProps) {
   const [showNewPassDiag, setShowNewPassDiag] = useState<boolean>(false);
   const [showNewEmailDiag, setShowNewEmailDiag] = useState<boolean>(false);
+  const [showNewNameDiag, setShowNewNameDiag] = useState<boolean>(false);
   const [alertDiagMessage, setAlertDiagMessage] = useState<string | null>(null);
   const newPasswordRef = useRef<HTMLInputElement>(null);
   const newEmailRef = useRef<HTMLInputElement>(null);
+  const newNameRef = useRef<HTMLInputElement>(null);
   const [request, _, isLoading, isError, errMessage, result] = useRequest();
 
   useEffect(
@@ -65,6 +68,20 @@ function Setting({ removeDiag }: IProps) {
     });
   }
 
+  function changeNameFormSubmitHandler(e: React.FormEvent) {
+    e.preventDefault();
+
+    const newName = newNameRef.current?.value;
+
+    if (!newName) return;
+
+    request(`${BASE_URL}/user/change-name`, {
+      method: "POST",
+      body: { newName },
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+  }
+
   return (
     <>
       {alertDiagMessage && (
@@ -90,6 +107,7 @@ function Setting({ removeDiag }: IProps) {
         <Form
           isLoading={isLoading}
           formSubmitHandler={changeEmailFormSubmitHandler}
+          buttonText="Change Email"
         >
           <InputBox
             placeholder="New Email Address"
@@ -101,29 +119,61 @@ function Setting({ removeDiag }: IProps) {
         </Form>
       )}
 
-      {!showNewPassDiag && !showNewEmailDiag && !alertDiagMessage && (
-        <div className={styles.setting}>
-          <p
-            onClick={() => {
-              setShowNewPassDiag(false);
-              setShowNewEmailDiag(true);
-            }}
-            className={styles["setting__item"]}
-          >
-            Change Email Address
-          </p>
-          <div className={styles["setting__divider"]}></div>
-          <p
-            onClick={() => {
-              setShowNewEmailDiag(false);
-              setShowNewPassDiag(true);
-            }}
-            className={styles["setting__item"]}
-          >
-            Change password
-          </p>
-        </div>
+      {showNewNameDiag && !alertDiagMessage && (
+        <Form
+          isLoading={isLoading}
+          formSubmitHandler={changeNameFormSubmitHandler}
+          buttonText="Change Name"
+        >
+          <InputBox
+            placeholder="New name"
+            type="text"
+            ref={newNameRef}
+            icon={iconUser}
+            required
+          />
+        </Form>
       )}
+
+      {!showNewNameDiag &&
+        !showNewPassDiag &&
+        !showNewEmailDiag &&
+        !alertDiagMessage && (
+          <div className={styles.setting}>
+            <p
+              onClick={() => {
+                setShowNewPassDiag(false);
+                setShowNewEmailDiag(false);
+                setShowNewNameDiag(true);
+              }}
+              className={styles["setting__item"]}
+            >
+              Change name
+            </p>
+            <div className={styles["setting__divider"]}></div>
+            <p
+              onClick={() => {
+                setShowNewNameDiag(false);
+                setShowNewPassDiag(false);
+                setShowNewEmailDiag(true);
+              }}
+              className={styles["setting__item"]}
+            >
+              Change Email Address
+            </p>
+            <div className={styles["setting__divider"]}></div>
+            <p
+              onClick={() => {
+                setShowNewNameDiag(false);
+                setShowNewEmailDiag(false);
+                setShowNewPassDiag(true);
+              }}
+              className={styles["setting__item"]}
+            >
+              Change password
+            </p>
+          </div>
+        )}
     </>
   );
 }
