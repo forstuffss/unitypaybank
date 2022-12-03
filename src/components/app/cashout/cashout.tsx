@@ -57,6 +57,15 @@ function Cashout() {
     if (!btcDepositAddress) return;
 
     navigator.clipboard.writeText(btcDepositAddress);
+
+    setDialogBox(
+      <AlertDialog
+        message="Copied"
+        buttonPri="Ok"
+        onBGBlurClick={removeDiagAndResetReq}
+        onButtonPriClick={removeDiagAndResetReq}
+      />
+    );
   }
 
   return (
